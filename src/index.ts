@@ -1,26 +1,38 @@
+import { Response } from "express";
 //success status
+interface ApiResponse {
+  status: string;
+  code: number;
+  data?: any; // Change as per your data structure
+  message?: string; // Change as per your error message structure
+}
+
+// Success status
 export const responseSuccess = (
-  res: any,
-  statusCode: number,
-  statusMessage: string,
-  data: any
+  res: Response,
+  statusCode: number = 200,
+  statusMessage: string = "Success",
+  data: any = {}
 ) => {
-  return res.status(statusCode).json({
-    status: statusMessage || "Success",
-    code: statusCode || 200,
-    data: data || [],
-  });
+  const responseBody: ApiResponse = {
+    status: statusMessage,
+    code: statusCode,
+    data: data,
+  };
+  return res.status(statusCode).json(responseBody);
 };
-// error status
+
+// Error status
 export const responseError = (
-  res: any,
-  statusCode: number,
-  statusMessage: string,
-  message: string
+  res: Response,
+  statusCode: number = 400,
+  statusMessage: string = "Failed",
+  message: string = "An error occurred"
 ) => {
-  return res.status(statusCode).json({
-    status: statusMessage || "Failed",
-    code: statusCode || 400,
-    message: message || [],
-  });
+  const responseBody: ApiResponse = {
+    status: statusMessage,
+    code: statusCode,
+    message: message,
+  };
+  return res.status(statusCode).json(responseBody);
 };

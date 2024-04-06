@@ -1,6 +1,6 @@
 {
   "name": "response-manager",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "response-manager is a lightweight npm package for managing HTTP responses in Express.js applications. It provides easy-to-use functions for sending success and error responses with customizable status codes, messages, and data.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -17,12 +17,19 @@
   "keywords": [
     "response-handler",
     "response",
-    "api-response"
+    "api-response",
+    "backend",
+    "api",
+    "response message"
   ],
   "devDependencies": {
     "typescript": "^5.3.3"
   },
   "files": [
     "lib/**/**"
-  ]
+  ],
+  "dependencies": {
+    "@types/express": "^4.17.21",
+    "express": "^4.19.2"
+  }
 }
